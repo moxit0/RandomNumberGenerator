@@ -10,7 +10,7 @@ class ProbabilityDistributedRandomNumberGeneratorTest {
      * The test demonstrates the usage by generating 100 random numbers and counting the occurrences of each number.
      */
     @Test
-    void randomGenerator_generatesNumbers_inAcceptableFrequency() {
+    public void randomGenerator_generatesNumbers_inAcceptableFrequency() {
         //given
         int[] randomNums = {-1, 0, 1, 2, 3};
         float[] weightedProbabilities = {0.01f, 0.3f, 0.58f, 0.1f, 0.01f};
