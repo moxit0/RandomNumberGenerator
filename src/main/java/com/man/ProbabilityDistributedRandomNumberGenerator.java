@@ -8,7 +8,7 @@ import java.util.Random;
  * takes in an array of numbers and an array of probabilities in its constructor.
  * The nextNum method generates a random number based on the given probabilities.
  */
-public final class WeightDistributedRandomNumberGenerator {
+public final class ProbabilityDistributedRandomNumberGenerator {
 
     // Values that may be returned by nextNum()
     private final int[] randomNums;
@@ -16,7 +16,7 @@ public final class WeightDistributedRandomNumberGenerator {
     private final float[] probabilities;
     private final Random random;
 
-    public WeightDistributedRandomNumberGenerator(int[] randomNums, float[] probabilities) {
+    public ProbabilityDistributedRandomNumberGenerator(int[] randomNums, float[] probabilities) {
         this.randomNums = randomNums;
         this.probabilities = probabilities;
         this.random = new Random();

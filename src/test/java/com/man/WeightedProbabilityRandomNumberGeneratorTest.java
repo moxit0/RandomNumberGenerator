@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WeightedProbabilityRandomNumberGeneratorTest {
 
+    /**
+     * The test demonstrates the usage by generating 100 random numbers and counting the occurrences of each number.
+     */
     @Test
     public void randomGenerator_generatesNumbers_inAcceptableFrequency() {
         //given
@@ -39,21 +42,22 @@ class WeightedProbabilityRandomNumberGeneratorTest {
         //then
         //check if nextNum() works correctly
         for (Map.Entry<WeightedProbabilityNumber, Integer> entry : testDataCapture.entrySet()) {
+            WeightedProbabilityNumber wpn = entry.getKey();
+            System.out.println(getTestSummary(wpn.value(), entry.getValue(), wpn.probability()));
+
             double achievedFrequency = entry.getValue() * Math.pow(testCount, -1);
-            double frequencyGap = Math.abs(achievedFrequency - entry.getKey().probability());
+            double frequencyGap = Math.abs(achievedFrequency - wpn.probability());
             assertTrue(frequencyGap < 0.1);
         }
-        String testSummery = getTestSummary(testDataCapture);
-        System.out.println(testSummery);
     }
 
-    private static String getTestSummary(Map<WeightedProbabilityNumber, Integer> testDataCapture) {
-        return testDataCapture.entrySet().stream().map(e -> new StringBuilder()
-                .append(e.getKey().value())
+    private String getTestSummary(int number, int frequency, float weight) {
+        return new StringBuilder()
+                .append(number)
                 .append(" occurrences -> ")
-                .append(e.getValue())
+                .append(frequency)
                 .append(" weight -> (")
-                .append(e.getKey().probability())
-                .append(")\n").toString()).collect(Collectors.joining());
+                .append(weight)
+                .append(")").toString();
     }
 }
